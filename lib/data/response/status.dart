@@ -1,6 +1,2 @@
-enum Status {
-  notStarted,
-  loading,
-  completed,
-  error,
-}
+// Status dari operasi jaringan.
+enum Status { notStarted, loading, completed, error }

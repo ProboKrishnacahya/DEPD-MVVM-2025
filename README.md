@@ -1,3 +1,7 @@
+> flutter run -d chrome --web-browser-flag="--disable-web-security" --web-browser-flag="--user-data-dir=/tmp/chrome-dev"
+
+---
+
 # depd_mvvm_2025
 
 A new Flutter project.

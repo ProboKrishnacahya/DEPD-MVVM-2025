@@ -1,34 +1,57 @@
+/// Kelas dasar untuk exception handling, menyimpan pesan dan prefix.
 class AppException implements Exception {
   final _message;
   final _prefix;
+
   AppException([this._message, this._prefix]);
 
   @override
   String toString() {
-    return '$_message$_prefix';
+    return '$_message $_prefix';
   }
 }
 
-class FetchDataException extends AppException {
-  FetchDataException([String? message])
-      : super(message, "Error During Communication!");
+/// Dilempar saat gagal mengambil data dari server (timeout, format salah, dll.).
+class FetchDataException implements Exception {
+  final String message;
+  FetchDataException(this.message);
+
+  @override
+  String toString() => 'FetchDataException: $message';
 }
 
-class BadRequestException extends AppException {
-  BadRequestException([String? message])
-      : super(message, "Invalid Request!");
+/// Dilempar saat tidak ada koneksi internet terdeteksi.
+class NoInternetException implements Exception {
+  final String message;
+  NoInternetException(this.message);
+
+  @override
+  String toString() => 'NoInternetException: $message';
 }
 
-class UnauthorizedException extends AppException {
-  UnauthorizedException([String? message])
-      : super(message, "Unauthorized!");
+/// Dilempar saat permintaan tidak valid (400 / data input salah).
+class BadRequestException implements Exception {
+  final String message;
+  BadRequestException(this.message);
+
+  @override
+  String toString() => 'BadRequestException: $message';
 }
 
-class InvalidInputException extends AppException {
-  InvalidInputException([String? message])
-      : super(message, "Invalid Input!");
+/// Dilempar saat resource / endpoint tidak ditemukan (404).
+class NotFoundException implements Exception {
+  final String message;
+  NotFoundException(this.message);
+
+  @override
+  String toString() => 'NotFoundException: $message';
 }
 
-class NoInternetException extends AppException {
-  NoInternetException([String? message]) : super(message, "No Internet Connection!");
+/// Dilempar saat terjadi kesalahan internal server (500+).
+class ServerErrorException implements Exception {
+  final String message;
+  ServerErrorException(this.message);
+
+  @override
+  String toString() => 'ServerErrorException: $message';
 }
